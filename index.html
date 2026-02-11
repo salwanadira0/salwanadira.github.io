@@ -11,26 +11,22 @@ body {
     background-color: #f4f6f9;
 }
 
-/* HEADER */
 header {
     background-color: #1e3d59;
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 20px;
 }
 
-/* TAGLINE BERGERAK */
-.marquee {
+.tagline {
     background-color: #ffcc00;
-    color: #000;
+    color: black;
     padding: 8px;
     font-weight: bold;
 }
 
-/* NAVIGATION */
 nav {
     background-color: #16324f;
-    text-align: center;
     padding: 10px;
 }
 
@@ -45,13 +41,11 @@ nav a:hover {
     color: #ffcc00;
 }
 
-/* SECTION */
 section {
     padding: 40px;
     text-align: center;
 }
 
-/* SEARCH */
 .search-box input {
     padding: 10px;
     width: 250px;
@@ -72,7 +66,6 @@ section {
     background-color: #16324f;
 }
 
-/* FOOTER */
 footer {
     background-color: #1e3d59;
     color: white;
@@ -80,7 +73,6 @@ footer {
     padding: 20px;
 }
 
-/* SOCIAL ICON */
 .social img {
     width: 40px;
     margin: 10px;
@@ -98,18 +90,18 @@ footer {
 <header>
     <h1>Perpustakaan Digital</h1>
     <p>Dibuat oleh <strong>Salwa Nadiranya</strong></p>
+
+    <div class="tagline">
+        <marquee>Membaca Lebih Mudah, Akses Ilmu Tanpa Batas 📚</marquee>
+    </div>
+
+    <nav>
+        <a href="beranda.html">Beranda</a>
+        <a href="tentang.html">Tentang</a>
+        <a href="koleksi.html">Koleksi</a>
+        <a href="kontak.html">Kontak</a>
+    </nav>
 </header>
-
-<div class="marquee">
-    <marquee>Selamat Datang di Perpustakaan Digital - Membaca Lebih Mudah, Akses Ilmu Tanpa Batas 📚</marquee>
-</div>
-
-<nav>
-    <a href="#">Beranda</a>
-    <a href="#">Tentang</a>
-    <a href="#">Koleksi</a>
-    <a href="#">Kontak</a>
-</nav>
 
 <section>
     <h2>Pencarian Buku</h2>
@@ -123,9 +115,9 @@ footer {
     <h2>Tentang Perpustakaan</h2>
     <p>
         Perpustakaan Digital menyediakan berbagai koleksi buku elektronik
-        yang dapat diakses kapan saja dan di mana saja. 
-        Kami berkomitmen untuk meningkatkan minat baca 
-        dan memberikan akses ilmu tanpa batas.
+        yang dapat diakses kapan saja dan di mana saja.
+        Kami berkomitmen meningkatkan minat baca dan
+        memberikan akses ilmu tanpa batas.
     </p>
 </section>
 
@@ -133,4 +125,22 @@ footer {
     <p>Ikuti & Kunjungi Saya:</p>
 
     <div class="social">
-        <!-- Ganti # dengan link kamu -->
+        <a href="ISI_LINK_INSTAGRAM" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram">
+        </a>
+
+        <a href="ISI_LINK_FACEBOOK" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook">
+        </a>
+
+        <a href="ISI_LINK_CV" target="_blank">
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135768.png" alt="Curriculum Vitae">
+        </a>
+    </div>
+
+    <p>&copy; 2026 Perpustakaan Digital | Salwa Nadiranya</p>
+</footer>
+
+</body>
+
+    
