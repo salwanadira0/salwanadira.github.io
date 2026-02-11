@@ -29,20 +29,28 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    transition:0.3s;
     z-index:1000;
     box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+header.scrolled{
+    background:#f6efe6;
+    padding:14px 80px;
 }
 
 header h1{
     color:#5c4b3b;
     font-size:20px;
+    letter-spacing:1px;
 }
 
 nav a{
     color:#5c4b3b;
     text-decoration:none;
-    margin-left:25px;
+    margin-left:28px;
     font-size:14px;
+    letter-spacing:1px;
     transition:0.3s;
 }
 
@@ -54,11 +62,11 @@ nav a:hover{
 .hero{
     position:relative;
     height:100vh;
+    overflow:hidden;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    overflow:hidden;
 }
 
 .slide{
@@ -75,48 +83,31 @@ nav a:hover{
     opacity:1;
 }
 
-.hero-content{
+.hero-text{
     position:relative;
-    background:rgba(255,255,255,0.9);
-    padding:50px;
-    border-radius:12px;
-    max-width:600px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+    background:rgba(255,255,255,0.88);
+    padding:60px;
+    border-radius:10px;
+    max-width:650px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
     z-index:2;
 }
 
-.hero-content h2{
+.hero-text h2{
+    font-size:38px;
     margin-bottom:15px;
+    font-weight:normal;
+    color:#5c4b3b;
 }
 
-/* SEARCH */
-.search-box{
-    margin-top:20px;
+.hero-text p{
+    font-size:17px;
+    line-height:1.7;
 }
 
-.search-box input{
-    padding:10px;
-    width:60%;
-    border-radius:5px;
-    border:1px solid #ccc;
-}
-
-.search-box button{
-    padding:10px 15px;
-    border:none;
-    background:#5c4b3b;
-    color:white;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.search-box button:hover{
-    background:#a1887f;
-}
-
-/* ABOUT */
+/* ABOUT SECTION */
 #about{
-    padding:140px 20px 100px;
+    padding:120px 20px;
     background:#f6efe6;
     text-align:center;
 }
@@ -124,6 +115,7 @@ nav a:hover{
 #about h2{
     margin-bottom:25px;
     font-size:30px;
+    color:#5c4b3b;
 }
 
 #about img{
@@ -133,14 +125,13 @@ nav a:hover{
     box-shadow:0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* IG & CV BOX */
 .social-box{
     background:white;
     padding:20px;
-    border-radius:10px;
     display:inline-block;
-    margin-top:10px;
+    border-radius:10px;
     box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    margin-top:10px;
 }
 
 .social-box a{
@@ -154,11 +145,10 @@ nav a:hover{
     color:#a1887f;
 }
 
-/* YOUTUBE BOX */
 .youtube-box{
     margin-top:30px;
-    padding:20px;
     background:white;
+    padding:20px;
     display:inline-block;
     border-radius:10px;
     box-shadow:0 5px 15px rgba(0,0,0,0.08);
@@ -176,10 +166,11 @@ nav a:hover{
 
 /* FOOTER */
 footer{
-    background:#fdfaf6;
+    background:#f6efe6;
+    color:#5c4b3b;
     text-align:center;
     padding:25px;
-    color:#5c4b3b;
+    font-size:14px;
 }
 
 html{
@@ -190,13 +181,13 @@ html{
 
 <body>
 
-<header>
+<header id="navbar">
     <h1>Perpustakaan Digital | Salwa Nadira</h1>
     <nav>
         <a href="#">Beranda</a>
         <a href="#">Koleksi</a>
         <a href="#">Layanan</a>
-        <a href="#about">About Me</a>
+        <a href="#">Kontak</a>
     </nav>
 </header>
 
@@ -204,9 +195,56 @@ html{
 
     <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f');"></div>
     <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1519681393784-d120267933ba');"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1529148482759-b35b25c5f217');"></div>
+    <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570');"></div>
 
-    <div class="hero-content">
+    <div class="hero-text">
         <h2>Selamat Datang</h2>
-        <p
+        <p>
+            Perpustakaan Digital yang menyediakan akses bacaan dan referensi
+            dalam satu ruang belajar yang terstruktur dan nyaman.
+        </p>
+    </div>
 
-    
+</section>
+
+<!-- ABOUT ME DITAMBAHKAN DI BAWAH HERO -->
+<section id="about">
+    <h2>About Me</h2>
+
+    <img src="https://images.unsplash.com/photo-1603415526960-fdb37b1a5a1a" alt="Foto Profil">
+
+    <div class="social-box">
+        <a href="ISI_LINK_INSTAGRAM" target="_blank">Instagram</a> |
+        <a href="ISI_LINK_CV" target="_blank">Curriculum Vitae</a>
+    </div>
+
+    <div class="youtube-box">
+        <a href="ISI_LINK_YOUTUBE" target="_blank">
+            Kunjungi Channel YouTube Saya
+        </a>
+    </div>
+</section>
+
+<footer>
+    © 2026 Perpustakaan Digital
+</footer>
+
+<script>
+const slides = document.querySelectorAll('.slide');
+let index = 0;
+
+setInterval(() => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+}, 6000);
+
+window.addEventListener("scroll", function(){
+    let header = document.getElementById("navbar");
+    header.classList.toggle("scrolled", window.scrollY > 50);
+});
+</script>
+
+</body>
+</html>
