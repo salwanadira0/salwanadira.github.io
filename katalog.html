@@ -1,43 +1,238 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-<title>Katalog</title>
-<style>
-body{font-family:Georgia;background:#fdfaf6;text-align:center;padding:40px}
-.card{background:#f6efe6;padding:15px;margin:10px;border-radius:8px}
-</style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Koleksi | SANADI Lib</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+    <style>
+        /* CSS RE-USE DARI BERANDA + CUSTOM UNTUK KATALOG */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #fdfaf6; color: #4a4b4a; line-height: 1.6; padding-top: 80px; }
+
+        /* HEADER & FOOTER (Tetap Konsisten) */
+        header { position: fixed; width: 100%; top: 0; left: 0; background: #ffffff; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .brand { display: flex; align-items: center; gap: 10px; color: #5c4b3b; font-size: 24px; font-weight: 700; }
+        nav a { color: #5c4b3b; text-decoration: none; margin-left: 25px; font-size: 15px; font-weight: 500; transition: 0.3s; }
+        nav a:hover { color: #d4a373; }
+        .btn-login-nav { background: #5c4b3b; color: white !important; padding: 8px 25px; border-radius: 25px; }
+
+        /* KATALOG HEADER */
+        .catalog-header {
+            background: #5c4b3b;
+            color: white;
+            padding: 60px 10%;
+            text-align: center;
+        }
+        .catalog-header h1 { font-size: 2.5rem; margin-bottom: 15px; }
+
+        /* SEARCH AREA */
+        .search-area {
+            background: white;
+            padding: 30px 10%;
+            display: flex;
+            justify-content: center;
+            position: sticky;
+            top: 75px; /* nempel di bawah header */
+            z-index: 900;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .search-box {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            gap: 15px;
+        }
+        .search-box input {
+            flex: 1;
+            padding: 15px 25px;
+            border: 2px solid #eaddcf;
+            border-radius: 12px;
+            outline: none;
+            font-size: 16px;
+        }
+        .search-box input:focus { border-color: #d4a373; }
+
+        /* GRID BUKU */
+        .catalog-grid {
+            padding: 40px 10%;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 30px;
+        }
+        .book-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #f0e6d6;
+            display: flex;
+            flex-direction: column;
+        }
+        .book-card:hover { transform: translateY(-10px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .book-img {
+            width: 100%;
+            height: 280px;
+            background: #eee;
+            object-fit: cover;
+        }
+        .book-info { padding: 20px; flex-grow: 1; }
+        .book-title { font-weight: 600; font-size: 16px; color: #3a3129; margin-bottom: 5px; }
+        .book-author { font-size: 13px; color: #d4a373; margin-bottom: 10px; font-weight: 500; }
+        .book-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .status-ada { background: #e8f5e9; color: #2e7d32; }
+        .status-pinjam { background: #ffebee; color: #c62828; }
+
+        /* LOADING & EMPTY STATE */
+        .status-msg { text-align: center; padding: 50px; font-size: 18px; color: #999; grid-column: 1 / -1; }
+
+        /* FOOTER (Sama dengan Beranda) */
+        footer { background: #3a3129; color: #f4eee8; padding: 60px 10% 30px; }
+        .footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-column h4 { color: #d4a373; margin-bottom: 20px; text-transform: uppercase; }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 13px; opacity: 0.7; }
+    </style>
+</head>
 <body>
 
-<h2>Katalog Buku</h2>
+<header>
+    <div class="brand">📚 SANADI Lib</div>
+    <nav>
+        <a href="index.html">Beranda</a>
+        <a href="katalog.html">Katalog</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#kegiatan">Kegiatan</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#" class="btn-login-nav">Login</a>
+    </nav>
+</header>
 
-<input type="text" id="cari">
-<button onclick="cari()">Cari</button>
+<main>
+    <div class="catalog-header">
+        <h1>Jelajahi Koleksi Kami</h1>
+        <p>Temukan ribuan literatur digital dan fisik dalam satu genggaman.</p>
+    </div>
 
-<div id="hasil"></div>
+    <div class="search-area">
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Cari judul buku, penulis, atau kategori...">
+        </div>
+    </div>
+
+    <div class="catalog-grid" id="bookGrid">
+        <p class="status-msg">Memuat koleksi...</p>
+    </div>
+</main>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>🕒 Jam Operasional</h4>
+            <p><strong>Senin - Jumat:</strong> 08.00 - 16.00 WIB</p>
+            <p><strong>Sabtu & Minggu:</strong> Tutup</p>
+        </div>
+        <div class="footer-column">
+            <h4>📍 Kontak & Lokasi</h4>
+            <p>📧 sanadilib@librari.id</p>
+            <p>Jl. Multatuli No. 12, Padang Bulan, Medan</p>
+        </div>
+        <div class="footer-column">
+            <h4>📱 Media Sosial</h4>
+            <p>Instagram: @sanadi_lib</p>
+            <p>Facebook: SANADI Library</p>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2026 SANADI Library - Elevating Knowledge. Seluruh Hak Cipta Dilindungi.</p>
+    </div>
+</footer>
 
 <script>
-const buku=[
-{judul:"Manajemen Perpustakaan",penulis:"Andi"},
-{judul:"Literasi Digital",penulis:"Rina"},
-{judul:"Metodologi Penelitian",penulis:"Budi"}
-];
+    // 1. KONFIGURASI SUPABASE
+    const SUPABASE_URL = 'https://virwjaxuizephvzykmbi.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_Gx9Wm4EqmDtCm_mO9ccoxA_eTrPdJJi';
 
-function cari(){
-let key=document.getElementById("cari").value.toLowerCase();
-let hasil=document.getElementById("hasil");
-hasil.innerHTML="";
+    // Inisialisasi client Supabase
+    const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-let f=buku.filter(b=>b.judul.toLowerCase().includes(key));
+    const bookGrid = document.getElementById('bookGrid');
+    const searchInput = document.getElementById('searchInput');
 
-f.forEach(b=>{
-hasil.innerHTML+=`<div class="card">
-<h3>${b.judul}</h3>
-<p>${b.penulis}</p>
-</div>`;
-});
-}
+    // 2. FUNGSI AMBIL DATA DARI TABEL 'KOLEKSI'
+    async function fetchBooks(query = '') {
+        try {
+            bookGrid.innerHTML = '<p class="status-msg">Mencari di koleksi...</p>';
+            
+            let request = _supabase
+                .from('koleksi') // Nama tabel sudah sesuai: koleksi
+                .select('*');
+
+            if (query) {
+                // Mencari berdasarkan judul, pengarang, atau subjek (sesuai kolommu)
+                request = request.or(`judul.ilike.%${query}%,pengarang.ilike.%${query}%,subjek.ilike.%${query}%`);
+            }
+
+            const { data, error } = await request;
+
+            if (error) throw error;
+            displayBooks(data);
+
+        } catch (error) {
+            console.error('Error:', error.message);
+            bookGrid.innerHTML = `<p class="status-msg" style="color:red">Gagal memuat data: ${error.message}</p>`;
+        }
+    }
+
+    // 3. FUNGSI RENDER KE HTML (Menyesuaikan kolom gambar, judul, pengarang)
+    function displayBooks(books) {
+        if (!books || books.length === 0) {
+            bookGrid.innerHTML = '<p class="status-msg">Buku tidak ditemukan di koleksi.</p>';
+            return;
+        }
+
+        bookGrid.innerHTML = books.map(book => `
+            <div class="book-card">
+                <img src="${book.gambar || 'https://via.placeholder.com/200x280?text=No+Cover'}" 
+                     class="book-img" 
+                     alt="${book.judul}">
+                <div class="book-info">
+                    <p class="book-title">${book.judul || 'Tanpa Judul'}</p>
+                    <p class="book-author">${book.pengarang || 'Anonim'}</p>
+                    <div style="margin-top: 10px;">
+                        <span class="book-status status-ada" style="font-size: 10px;">
+                            ${book.bahasa || 'Indonesia'}
+                        </span>
+                    </div>
+                    <p style="font-size: 11px; color: #999; margin-top: 5px;">ISBN: ${book.isbn || '-'}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    // 4. EVENT SEARCH (Debounce 0.5 detik)
+    let searchTimeout;
+    searchInput.addEventListener('input', (e) => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => {
+            fetchBooks(e.target.value);
+        }, 500);
+    });
+
+    // 5. JALANKAN SAAT HALAMAN DIBUKA
+    document.addEventListener('DOMContentLoaded', () => {
+        fetchBooks();
+    });
 </script>
 
 </body>
