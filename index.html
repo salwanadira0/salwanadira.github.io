@@ -1,199 +1,236 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SANADI Library | Perpustakaan Digital</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SANADI Lib | Perpustakaan Perguruan Tinggi</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-    /* RESET & BASE STYLES */
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    body{
-        background:#fdfaf6;
-        color:#4a4b4a;
-        line-height: 1.6;
-    }
+        body {
+            background: #fdfaf6;
+            color: #4a4b4a;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
 
-    /* HEADER */
-    header{
-        position:fixed;
-        width:100%;
-        top:0;
-        left:0;
-        background:rgba(255,248,240,0.98);
-        padding:15px 5%;
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
-        z-index:1000;
-        box-shadow:0 2px 15px rgba(0,0,0,0.1);
-    }
+        /* HEADER STICKY */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-    .brand{
-        display:flex;
-        align-items:center;
-        gap:10px;
-        color:#5c4b3b;
-        font-size:22px;
-        font-weight: bold;
-    }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #5c4b3b;
+            font-size: 24px;
+            font-weight: 700;
+        }
 
-    nav a{
-        color:#5c4b3b;
-        text-decoration:none;
-        margin-left:20px;
-        font-size:14px;
-        font-weight: 500;
-        transition: 0.3s;
-    }
+        nav a {
+            color: #5c4b3b;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-    nav a:hover{
-        color:#d4a373;
-    }
+        nav a:hover { color: #d4a373; }
 
-    /* HERO SECTION */
-    .hero{
-        height:80vh;
-        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                    url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=1350&q=80') center/cover;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        text-align:center;
-        color: white;
-        margin-top: 60px;
-    }
+        .btn-login-nav {
+            background: #5c4b3b;
+            color: white !important;
+            padding: 8px 25px;
+            border-radius: 25px;
+        }
 
-    .hero-text{
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(5px);
-        padding: 40px;
-        border-radius: 15px;
-        border: 1px solid rgba(255,255,255,0.2);
-    }
+        /* HERO SECTION */
+        .hero {
+            padding: 60px 5%;
+            text-align: center;
+            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                        url('https://images.unsplash.com/photo-1541339907198-e08756ebafe3?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
 
-    /* SEARCH SECTION */
-    #search{
-        padding:60px 5%;
-        text-align:center;
-    }
+        .welcome-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            width: 90%;
+            border: 1px solid #f0e6d6;
+        }
 
-    .search-container input{
-        width:400px;
-        padding:15px;
-        border:2px solid #e0d5c1;
-        border-radius:30px;
-        outline: none;
-    }
+        .welcome-msg {
+            font-weight: 700;
+            font-size: 2.5rem;
+            color: #3a3129;
+            margin-bottom: 10px;
+        }
 
-    .search-container button{
-        padding:15px 30px;
-        background:#5c4b3b;
-        color:white;
-        border:none;
-        border-radius:30px;
-        cursor:pointer;
-        margin-left: 10px;
-        transition: 0.3s;
-    }
+        /* SEARCH BAR SECTION */
+        .search-section {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
 
-    /* CARDS & BOOKS */
-    .container {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 25px;
-        padding: 40px 5%;
-    }
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            gap: 10px;
+        }
 
-    .card{
-        background:white;
-        padding:15px;
-        border-radius:12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        transition: transform 0.3s;
-        text-align: center;
-    }
+        .search-container input {
+            flex: 1;
+            padding: 15px 25px;
+            border: 2px solid #e0d5c1;
+            border-radius: 30px;
+            outline: none;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
 
-    .card:hover{
-        transform: translateY(-10px);
-    }
+        .search-container button {
+            padding: 0 30px;
+            background: #5c4b3b;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
 
-    .card img {
-        width: 100%;
-        height: 280px;
-        object-fit: cover;
-        border-radius: 8px;
-        margin-bottom: 15px;
-    }
+        .search-container button:hover { background: #d4a373; }
 
-    .card h4 {
-        font-size: 16px;
-        color: #333;
-        margin-bottom: 5px;
-    }
+        /* PEMISAH */
+        .section-divider {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(92, 75, 59, 0.75), rgba(0, 0, 0, 0));
+            margin: 0 auto;
+            width: 80%;
+        }
 
-    .card p {
-        font-size: 13px;
-        color: #888;
-    }
+        /* CONTENT SECTIONS */
+        section { padding: 60px 10%; }
 
-    /* EVENT SECTION */
-    #events {
-        background: #f4eee8;
-        padding: 60px 5%;
-    }
+        /* MODIFIKASI TENTANG KAMI */
+        .about-section { 
+            background: white; 
+            max-width: 1000px; /* Batasi lebar agar teks tidak terlalu melar ke samping */
+            margin: 0 auto;
+        }
 
-    .event-banner {
-        background: #5c4b3b;
-        color: white;
-        display: flex;
-        align-items: center;
-        border-radius: 15px;
-        overflow: hidden;
-        margin-top: 30px;
-    }
+        .about-section h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #5c4b3b;
+        }
 
-    .event-img {
-        flex: 1;
-        height: 300px;
-        background: url('https://images.unsplash.com/photo-1526721940322-10fb6e3ae94a?auto=format&fit=crop&w=800&q=80') center/cover;
-    }
+        .about-section p {
+            text-align: justify; /* Rata kanan-kiri */
+            text-justify: inter-word;
+            margin-bottom: 20px; /* Jarak/spasi antar paragraf */
+            color: #555;
+            line-height: 1.8; /* Memberikan spasi antar baris agar lebih lega */
+        }
 
-    .event-info {
-        flex: 1;
-        padding: 40px;
-    }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
 
-    .btn-event {
-        display: inline-block;
-        margin-top: 15px;
-        padding: 10px 20px;
-        background: #d4a373;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-    }
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            border: 1px solid #f0e6d6;
+        }
 
-    /* FOOTER */
-    footer{
-        background:#3a3129;
-        color:white;
-        padding:40px 5%;
-        text-align: center;
-    }
+        /* FOOTER */
+        footer {
+            background: #3a3129;
+            color: #f4eee8;
+            padding: 60px 10% 30px;
+            text-align: left;
+        }
 
-    @media(max-width:768px){
-        .search-container input { width: 80%; }
-        .event-banner { flex-direction: column; }
-        .event-img { width: 100%; height: 200px; }
-    }
-</style>
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            color: #d4a373;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .footer-column p { font-size: 14px; margin-bottom: 10px; }
+
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .social-links a:hover { color: #d4a373; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .welcome-msg { font-size: 2rem; }
+            footer { text-align: center; }
+            .about-section { padding: 40px 5%; }
+        }
+    </style>
 </head>
 <body>
 
@@ -201,112 +238,89 @@
     <div class="brand">📚 SANADI Lib</div>
     <nav>
         <a href="#">Beranda</a>
-        <a href="#koleksi">Katalog</a>
-        <a href="#events">Pameran</a>
-        <a href="#">Tentang</a>
+        <a href="#katalog">Katalog</a>
+        <a href="#layanan">Layanan</a>
+        <a href="#kegiatan">Kegiatan</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#" class="btn-login-nav">Login</a>
     </nav>
 </header>
 
-<section class="hero">
-    <div class="hero-text">
-        <h1>Temukan Pengetahuan di Jari Anda</h1>
-        <p>Akses ribuan referensi ilmiah dan buku digital berkualitas.</p>
-    </div>
-</section>
+<main>
+    <section class="hero">
+        <div class="welcome-container">
+            <h1 class="welcome-msg">Selamat Datang di SANADI Lib</h1>
+            <p>Pusat Pengetahuan Digital Masyarakat</p>
+        </div>
 
-<section id="search">
-    <h2>Cari Koleksi Buku</h2>
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Ketik judul buku atau penulis...">
-        <button onclick="searchBook()">Cari</button>
-    </div>
-    <div id="results" class="container"></div>
-</section>
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" placeholder="Cari Koleksi...">
+                <button>Cari</button>
+            </div>
+        </div>
+    </section>
 
-<section id="koleksi">
-    <h2 style="text-align:center;">Koleksi Unggulan</h2>
-    <div class="container" id="bookGrid">
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80" alt="Buku">
-            <h4>Manajemen Modern</h4>
-            <p>Dr. Andi Permana</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=400&q=80" alt="Buku">
-            <h4>Ilmu Informasi</h4>
-            <p>Siti Rahma, M.Hum</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=80" alt="Buku">
-            <h4>Metodologi Penelitian</h4>
-            <p>Prof. Budi Utomo</p>
-        </div>
-        <div class="card">
-            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80" alt="Buku">
-            <h4>Literasi Digital</h4>
-            <p>Rina Lestari</p>
-        </div>
-    </div>
-</section>
+    <hr class="section-divider">
 
-<section id="events">
-    <h2 style="text-align:center;">Event Mendatang</h2>
-    <div class="event-banner">
-        <div class="event-img"></div>
-        <div class="event-info">
-            <span style="background:#d4a373; padding:5px 10px; border-radius:3px; font-size:12px;">COMING SOON</span>
-            <h3 style="margin-top:10px;">Pameran Buku Nasional 2026</h3>
-            <p>Bergabunglah dalam perayaan literasi terbesar tahun ini. Diskon buku hingga 70% dan temu penulis nasional.</p>
-            <p><strong>📍 Aula Utama SANADI | 15-20 Mei 2026</strong></p>
-            <a href="#" class="btn-event">Daftar Sekarang</a>
+    <section class="about-section">
+        <h2>Tentang Kami</h2>
+        <p>SANADI Lib hadir sebagai pusat literasi dan ruang publik yang didedikasikan untuk mencerdaskan serta memberdayakan masyarakat. Kami percaya bahwa perpustakaan adalah jantung dari komunitas, tempat di mana setiap individu, tanpa memandang latar belakang, memiliki hak yang sama untuk mengakses ilmu pengetahuan. Dengan semangat pelayanan inklusif, kami berkomitmen untuk menyediakan lingkungan yang ramah bagi anak-anak, pelajar, hingga lansia untuk belajar sepanjang hayat dan memperluas cakrawala berpikir.</p>
+        
+        <p>Dalam mendukung kebutuhan informasi masyarakat modern, kami menyediakan koleksi yang beragam, mulai dari buku bacaan populer, literatur edukatif, hingga arsip sejarah lokal. Selain koleksi fisik yang tertata rapi, SANADI Lib juga menghadirkan layanan digital berupa akses e-book dan pangkalan data daring yang dapat dinikmati di mana saja. Integrasi teknologi ini kami hadirkan untuk memastikan bahwa seluruh warga tetap terhubung dengan perkembangan informasi dan tren pengetahuan global di era digital.</p>
+        
+        <p>Lebih dari sekadar tempat membaca, SANADI Lib berfungsi sebagai pusat aktivitas sosial dan kolaboratif bagi warga. Kami menyediakan fasilitas ruang publik yang nyaman, mulai dari area baca yang tenang hingga ruang pertemuan untuk berbagai kegiatan komunitas dan lokakarya kreatif. Dengan bertransformasi menjadi perpustakaan berbasis inklusi sosial, kami bertujuan untuk tidak hanya menyediakan buku, tetapi juga menjadi wadah bagi masyarakat untuk berinovasi, berkarya, dan meningkatkan kualitas hidup secara bersama-sama.</p>
+    </section>
+
+    <section id="layanan" class="services-section">
+        <h2 style="text-align: center; color: #5c4b3b;">Layanan Kami</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🔍 Pencarian Katalog</h3>
+                <p>Temukan koleksi buku dan referensi fisik melalui sistem OPAC kami yang terintegrasi.</p>
+            </div>
+            <div class="service-card">
+                <h3>📅 Informasi Kegiatan</h3>
+                <p>Update jadwal workshop literasi, pameran buku, dan bedah karya ilmiah terbaru.</p>
+            </div>
+            <div class="service-card">
+                <h3>📞 Kontak</h3>
+                <p>Butuh bantuan pustakawan? Hubungi kami melalui layanan chat atau email bantuan.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <footer>
-    <p>© 2026 SANADI Library - Elevating Knowledge</p>
-    <p style="font-size: 12px; color: #aaa; margin-top: 10px;">Instagram: @salwanadiira</p>
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>🕒 Jam Operasional</h4>
+            <p><strong>Senin - Jumat:</strong> 08.00 - 16.00 WIB</p>
+            <p><strong>Sabtu & Minggu:</strong> Tutup</p>
+            <p><strong>Libur Nasional:</strong> Tutup</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>📍 Kontak & Lokasi</h4>
+            <p>📧 sanadilib@librari.id</p>
+            <p>📞 +62 812 3456 7890</p>
+            <p>Jl. Multatuli No. 12, Padang Bulan,<br>Kota Medan, Sumatera Utara 20155</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>📱 Media Sosial</h4>
+            <div class="social-links">
+                <a href="#">📸 Instagram: @sanadi_lib</a>
+                <a href="#">🔵 Facebook: SANADI Library</a>
+                <a href="#">🐦 Twitter/X: @sanadilib</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2026 SANADI Library - Elevating Knowledge. Seluruh Hak Cipta Dilindungi.</p>
+    </div>
 </footer>
-
-<script>
-    // Data buku untuk fitur pencarian
-    const books = [
-        {title:"Manajemen Modern", author:"Dr. Andi Permana", img:"https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=400&q=80"},
-        {title:"Ilmu Informasi", author:"Siti Rahma, M.Hum", img:"https://images.unsplash.com/photo-1589998059171-988d887df646?auto=format&fit=crop&w=400&q=80"},
-        {title:"Metodologi Penelitian", author:"Prof. Budi Utomo", img:"https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=400&q=80"},
-        {title:"Literasi Digital", author:"Rina Lestari", img:"https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=format&fit=crop&w=400&q=80"}
-    ];
-
-    function searchBook(){
-        const keyword = document.getElementById("searchInput").value.toLowerCase();
-        const resultDiv = document.getElementById("results");
-        resultDiv.innerHTML = "";
-
-        if(keyword === "") {
-            resultDiv.innerHTML = "<p style='width:100%'>Silahkan masukkan kata kunci.</p>";
-            return;
-        }
-
-        const filtered = books.filter(book => 
-            book.title.toLowerCase().includes(keyword) || 
-            book.author.toLowerCase().includes(keyword)
-        );
-
-        if(filtered.length === 0){
-            resultDiv.innerHTML = "<p style='width:100%'>Buku tidak ditemukan.</p>";
-        } else {
-            filtered.forEach(book => {
-                resultDiv.innerHTML += `
-                    <div class="card">
-                        <img src="${book.img}" alt="Buku">
-                        <h4>${book.title}</h4>
-                        <p>${book.author}</p>
-                    </div>
-                `;
-            });
-        }
-    }
-</script>
 
 </body>
 </html>
