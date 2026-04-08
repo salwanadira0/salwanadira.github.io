@@ -1,143 +1,301 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hubungi Saya - Salwa Nadira</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak | SANADI Lib</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Georgia', serif;
-}
+    <style>
+        /* RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-body{
-    background:#fdfaf6;
-    color:#5c4b3b;
-}
+        body {
+            background: #fdfaf6;
+            color: #4a4b4a;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
 
-/* HEADER */
-header{
-    background:#f6efe6;
-    padding:20px 80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
+        /* HEADER STICKY */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-header h1{
-    font-size:20px;
-}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #5c4b3b;
+            font-size: 24px;
+            font-weight: 700;
+        }
 
-nav a{
-    text-decoration:none;
-    color:#5c4b3b;
-    margin-left:25px;
-}
+        nav a {
+            color: #5c4b3b;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: 0.3s;
+        }
 
-nav a:hover{
-    color:#a1887f;
-}
+        nav a:hover { color: #d4a373; }
 
-/* CONTAINER */
-.container{
-    max-width:900px;
-    margin:80px auto;
-    padding:40px;
-    background:white;
-    border-radius:10px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-}
+        .btn-login-nav {
+            background: #5c4b3b;
+            color: white !important;
+            padding: 8px 25px;
+            border-radius: 25px;
+        }
 
-h2{
-    text-align:center;
-    margin-bottom:30px;
-}
+        /* PAGE CONTENT */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 5%;
+        }
 
-/* FORM */
-form{
-    margin-bottom:40px;
-}
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
 
-input, textarea{
-    width:100%;
-    padding:12px;
-    margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:5px;
-}
+        .contact-info-card, .form-card, .admin-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #f0e6d6;
+        }
 
-button{
-    background:#5c4b3b;
-    color:white;
-    padding:12px 25px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
+        h2 { color: #5c4b3b; margin-bottom: 20px; }
+        h3 { color: #3a3129; margin-bottom: 15px; }
 
-button:hover{
-    background:#a1887f;
-}
+        /* CONTACT DETAILS */
+        .info-item {
+            margin-bottom: 20px;
+        }
 
-/* INFO */
-.info{
-    text-align:center;
-    margin-bottom:30px;
-}
+        .info-item strong { display: block; color: #5c4b3b; }
 
-iframe{
-    width:100%;
-    height:300px;
-    border-radius:10px;
-    border:none;
-}
+        /* FORM STYLE */
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 500; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0d5c1;
+            border-radius: 10px;
+            outline: none;
+        }
 
-footer{
-    text-align:center;
-    padding:20px;
-    background:#f6efe6;
-    margin-top:40px;
-}
-</style>
+        .btn-submit {
+            background: #5c4b3b;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            width: 100%;
+        }
+
+        .btn-submit:hover { background: #d4a373; }
+
+        /* ADMIN PROFILE CARD */
+        .admin-section {
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .admin-card {
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-align: left;
+        }
+
+        .admin-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #f0e6d6;
+        }
+
+        .admin-links { margin-top: 15px; }
+        .admin-links a {
+            text-decoration: none;
+            color: white;
+            background: #d4a373;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 13px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+        .admin-links a:hover { background: #5c4b3b; }
+
+        /* FOOTER */
+        footer {
+            background: #3a3129;
+            color: #f4eee8;
+            padding: 60px 10% 30px;
+            text-align: left;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h4 {
+            color: #d4a373;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .footer-column p { font-size: 14px; margin-bottom: 10px; }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid, .admin-card { grid-template-columns: 1fr; flex-direction: column; text-align: center; }
+            nav { display: none; }
+        }
+    </style>
 </head>
-
 <body>
 
 <header>
-    <h1>Perpustakaan Digital | Salwa Nadira</h1>
+    <div class="brand">📚 SANADI Lib</div>
     <nav>
         <a href="index.html">Beranda</a>
+        <a href="#">Katalog</a>
+        <a href="#">Layanan</a>
+        <a href="#">Kegiatan</a>
+        <a href="kontak.html">Kontak</a>
+        <a href="#" class="btn-login-nav">Login</a>
     </nav>
 </header>
 
-<div class="container">
-
-    <h2>Hubungi Saya</h2>
-
-    <form>
-        <input type="text" placeholder="Nama Lengkap" required>
-        <input type="email" placeholder="Email" required>
-        <textarea rows="5" placeholder="Tulis pesan anda..." required></textarea>
-        <button type="submit">Kirim Pesan</button>
-    </form>
-
-    <div class="info">
-        <p><strong>Email:</strong> salwanadira@email.com</p>
-        <p><strong>Lokasi:</strong> Jakarta, Indonesia</p>
+<main class="container">
+    <div style="text-align: center; margin-bottom: 40px;">
+        <h2>Hubungi Kami</h2>
+        <p>Kami siap membantu Anda menemukan informasi yang dibutuhkan. Silakan hubungi layanan bantuan pustakawan kami.</p>
     </div>
 
-    <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126920.55212080092!2d106.774124!3d-6.229728!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f1c2d89a6b1b%3A0x3039d80b220c5a0!2sJakarta!5e0!3m2!1sid!2sid!4v1690000000000"
-    loading="lazy">
-    </iframe>
+    <div class="contact-grid">
+        <div class="contact-info-card">
+            <h3>Informasi Kontak</h3>
+            <div class="info-item">
+                <strong>📧 Email Pustakawan:</strong>
+                <p>librarian@sanadilib.id</p>
+            </div>
+            <div class="info-item">
+                <strong>💬 WhatsApp Librarian:</strong>
+                <p>+62 812-3456-7890</p>
+            </div>
+            <div class="info-item">
+                <strong>🕒 Jam Layanan Kontak:</strong>
+                <p>Senin - Jumat: 08.00 - 16.00 WIB</p>
+                <small>*Pesan di luar jam kerja akan dibalas pada hari operasional berikutnya.</small>
+            </div>
+        </div>
 
-</div>
+        <div class="form-card">
+            <h3>Kritik & Saran</h3>
+            <form>
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" placeholder="Masukkan nama Anda...">
+                </div>
+                <div class="form-group">
+                    <label>Email / WhatsApp</label>
+                    <input type="text" placeholder="Kontak yang bisa dihubungi...">
+                </div>
+                <div class="form-group">
+                    <label>Pesan Kritik & Saran</label>
+                    <textarea rows="4" placeholder="Tuliskan pesan Anda di sini..."></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Kirim Pesan</button>
+            </form>
+        </div>
+    </div>
+
+    <hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(92, 75, 59, 0.4), rgba(0, 0, 0, 0)); margin: 40px auto; width: 80%;">
+
+    <div class="admin-section">
+        <h3 style="margin-bottom: 30px; color: #5c4b3b;">Admin Perpustakaan</h3>
+        <div class="admin-card">
+            <img src="salwa.jpg" alt="Salwa Nadira" class="admin-photo">
+            <div>
+                <h4>Salwa Nadira</h4>
+                <p>Pustakawan Utama yang berdedikasi dalam pengelolaan aset digital dan layanan inklusi sosial di SANADI Lib. Berpengalaman dalam manajemen informasi dan pengembangan literasi masyarakat.</p>
+                <div class="admin-links">
+                    <a href="https://instagram.com/salwanadiira" target="_blank">📸 Instagram</a>
+                    <a href="https://docs.google.com/document/d/1JoN5TQFH0LnJc57tKSxIkn-xe-aAv8b1/edit?usp=drive_link&ouid=112925779998735673901&rtpof=true&sd=true" target="_blank">📄 Lihat CV (Google Drive)</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 <footer>
-    © 2026 Perpustakaan Digital | Salwa Nadira
+    <div class="footer-container">
+        <div class="footer-column">
+            <h4>🕒 Jam Operasional</h4>
+            <p><strong>Senin - Jumat:</strong> 08.00 - 16.00 WIB</p>
+            <p><strong>Sabtu & Minggu:</strong> Tutup</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>📍 Kontak & Lokasi</h4>
+            <p>📧 sanadilib@librari.id</p>
+            <p>📞 +62 812 3456 7890</p>
+            <p>Jl. Multatuli No. 12, Padang Bulan, Kota Medan</p>
+        </div>
+
+        <div class="footer-column">
+            <h4>📱 Media Sosial</h4>
+            <p>📸 Instagram: @sanadi_lib</p>
+            <p>🔵 Facebook: SANADI Library</p>
+        </div>
+    </div>
+
+    <div class="copyright">
+        <p>&copy; 2026 SANADI Library - Elevating Knowledge. Seluruh Hak Cipta Dilindungi.</p>
+    </div>
 </footer>
 
 </body>
